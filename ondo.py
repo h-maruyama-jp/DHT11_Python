@@ -34,7 +34,7 @@ try:
 	        Msg = "Temperature" + str(result.temperature) + "C" + "  Humidity" + str(result.humidity) + "%"
 	        print("Publishing message: %s to topic: %s" % (Msg, Topic))
 	        client.publish(Topic,Msg)
-	    time.sleep(6)
+	    time.sleep(10)
 
 except KeyboardInterrupt:
     print("Cleanup")

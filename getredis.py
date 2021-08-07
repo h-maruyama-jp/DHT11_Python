@@ -12,3 +12,7 @@ RedisPwd = "CTFaaddfoG014Km6QC6QQ1ueaKh9hIE3"
 r = redis.Redis(host=RedisHost, port=RedisPort, password=RedisPwd, db=0)
 ret = r.get(RedisKey)
 print(ret)
+
+print(ret[11:15])
+print(ret[26:30])
+
