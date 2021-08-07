@@ -68,8 +68,8 @@ def on_message(client, userdata, message):  ### callback when get message from M
 #####  Main                     ###########################
 
 ### Check Radis connection
-#ret = check_db()
-#if ret is None:                             # for debug                 
+# ret = check_db()
+# if ret is None:                             # for debug                 
 #    print("***** Failed check Radis *****")
 #    exit(1)
 

@@ -30,7 +30,7 @@ RedisKey = "RPIvalue"
 
 RedisHost = "redis-16303.c100.us-east-1-4.ec2.cloud.redislabs.com"  
 RedisPort = "16303"
-RedisPwd = ""
+RedisPwd = RedisKeyValue
 ##########################
 
 ###########################################################
