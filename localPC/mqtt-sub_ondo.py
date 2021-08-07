@@ -2,8 +2,8 @@
 
 import paho.mqtt.client as mqtt
 import time
-import redis
-from setenv import RedisKeyValue
+#import redis
+#from setenv import RedisKeyValue
 
 ###########################################################
 #####  Set constant values for MQTT broker   ##############
@@ -36,7 +36,7 @@ MqttTopic = "ondo/h-maruyama-jp"
 ###########################################################
 #####  Define functions   #################################
 
-def check_db():
+#def check_db():
     ### Check Redis connection 
 #    r = redis.Redis(host=RedisHost, port=RedisPort, password=RedisPwd, db=0)
 #    print("Connected Radis...: " + RedisHost)
@@ -50,7 +50,7 @@ def check_db():
 #    print("RedisKey:" + RedisKey + " KeyValue:" + msg)
 #    return ret
 
-def set_db(msg):                            ### set data to Redis 
+#def set_db(msg):                            ### set data to Redis 
 #    r = redis.Redis(host=RedisHost, port=RedisPort, password=RedisPwd, db=0)
 #    r.set(RedisKey ,msg)                   
 #    print("Updated Radis db=0")
