@@ -15,7 +15,7 @@ MqttTopic = "ondo/h-maruyama-jp"
 ###########################################################
 #####  Set constant values for Radis  #####################
 
-#RedisKey = "RPIvalue"
+RedisKey = "RPIvalue"
 
 ##########################
 ### For Local Redis 
@@ -28,9 +28,9 @@ MqttTopic = "ondo/h-maruyama-jp"
 ### For using RadisLabs
 ### You need to change RedisHost,RedisPort and RedisPwd below
 
-#RedisHost = "redis-16303.c100.us-east-1-4.ec2.cloud.redislabs.com"  
-#RedisPort = "16303"
-#RedisPwd = ""
+RedisHost = "redis-16303.c100.us-east-1-4.ec2.cloud.redislabs.com"  
+RedisPort = "16303"
+RedisPwd = ""
 ##########################
 
 ###########################################################
@@ -38,27 +38,27 @@ MqttTopic = "ondo/h-maruyama-jp"
 
 def check_db():
     ### Check Redis connection 
-#    r = redis.Redis(host=RedisHost, port=RedisPort, password=RedisPwd, db=0)
-#    print("Connected Radis...: " + RedisHost)
+    r = redis.Redis(host=RedisHost, port=RedisPort, password=RedisPwd, db=0)
+    print("Connected Radis...: " + RedisHost)
     ### Check Redis Key
-#    ret = r.get(RedisKey)
-#    print (ret)                             ### for debug
-#    if ret is None:                         # if no exist RedisKey                 
-#        print("Failed Key: " + RedisKey)
-#        return ret                          # Return Value
-#    msg = str(ret.decode("utf-8"))
-#    print("RedisKey:" + RedisKey + " KeyValue:" + msg)
-#    return ret
+    ret = r.get(RedisKey)
+    print (ret)                             ### for debug
+    if ret is None:                         # if no exist RedisKey                 
+        print("Failed Key: " + RedisKey)
+        return ret                          # Return Value
+    msg = str(ret.decode("utf-8"))
+    print("RedisKey:" + RedisKey + " KeyValue:" + msg)
+    return ret
 
 def set_db(msg):                            ### set data to Redis 
-#    r = redis.Redis(host=RedisHost, port=RedisPort, password=RedisPwd, db=0)
-#    r.set(RedisKey ,msg)                   
-#    print("Updated Radis db=0")
+    r = redis.Redis(host=RedisHost, port=RedisPort, password=RedisPwd, db=0)
+    r.set(RedisKey ,msg)                   
+    print("Updated Radis db=0")
 
 def on_message(client, userdata, message):  ### callback when get message from MQTT broker
     msg = str(message.payload.decode("utf-8"))
     print("Message received:" + msg)
-#    set_db(msg)                             ### call Function set_db(msg)
+    set_db(msg)                             ### call Function set_db(msg)
     ### for debug
     #print("message topic=",message.topic)
     #print("message qos=",message.qos)
@@ -68,10 +68,10 @@ def on_message(client, userdata, message):  ### callback when get message from M
 #####  Main                     ###########################
 
 ### Check Radis connection
-#ret = check_db()
-#if ret is None:                             # for debug                 
-#    print("***** Failed check Radis *****")
-#    exit(1)
+ret = check_db()
+if ret is None:                             # for debug                 
+    print("***** Failed check Radis *****")
+    exit(1)
 
 ### Connect MQTT broker 
 print("Connecting to MQTT broker:" + BrokerAddress)
