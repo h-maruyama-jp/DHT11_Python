@@ -3,6 +3,7 @@
 import paho.mqtt.client as mqtt
 import time
 import redis
+from setenv import RedisKeyValue
 
 ###########################################################
 #####  Set constant values for MQTT broker   ##############
@@ -20,7 +21,7 @@ RedisKey = "RPIvalue"
 ### For Local Redis 
 # RedisHost = "127.0.0.1"                  
 # RedisPort = "6379"
-# RedisPwd = ""
+# RedisPwd = RedisKeyValue
 ##########################
 
 ##########################

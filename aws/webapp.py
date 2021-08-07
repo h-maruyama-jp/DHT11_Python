@@ -6,6 +6,7 @@ import time
 import redis
 import os
 from flask import Flask, render_template, request
+from setenv import RedisKeyValue
 
 # Create a Flask instance
 app = Flask(__name__)
@@ -17,7 +18,7 @@ def home():
 
     RedisHost = "redis-16303.c100.us-east-1-4.ec2.cloud.redislabs.com"
     RedisPort = "16303"
-    RedisPwd = ""
+    RedisPwd = RedisKeyValue
 
     while True:
         r = redis.Redis(host=RedisHost, port=RedisPort, password=RedisPwd, db=0)
