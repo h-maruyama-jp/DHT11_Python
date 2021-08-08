@@ -23,7 +23,10 @@ def home():
     while True:
         r = redis.Redis(host=RedisHost, port=RedisPort, password=RedisPwd, db=0)
         ret = r.get(RedisKey)
-        values = {"val1":ret[11:15], "val2":ret[26:30]}
+        # print(str(ret))    # for debug
+        ondo = str(ret).split("'")
+        # print(ondo[1])     # for debug
+        values = {"val1":ondo[1][11:15], "val2":ondo[1][26:30]}
         return render_template('index.html', values=values)
         time.sleep(10)
 
