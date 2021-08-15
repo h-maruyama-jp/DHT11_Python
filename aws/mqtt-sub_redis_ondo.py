@@ -3,6 +3,7 @@
 import paho.mqtt.client as mqtt
 import time
 import redis
+import datetime
 from setenv import RedisKeyValue
 
 ###########################################################
@@ -52,7 +53,9 @@ def check_db():
 
 def set_db(msg):                            ### set data to Redis 
     r = redis.Redis(host=RedisHost, port=RedisPort, password=RedisPwd, db=0)
-    r.set(RedisKey ,msg)                   
+    # now_t = (datetime.datetime.now()).strftime("%m/%d %H:%M:%S")
+    # r.set(now_t ,msg)
+    r.set(RedisKey ,msg)
     print("Updated Radis db=0")
 
 def on_message(client, userdata, message):  ### callback when get message from MQTT broker
