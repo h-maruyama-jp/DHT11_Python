@@ -21,17 +21,21 @@ def main():
         if ResultTemp >= 35:
             send_line_notify(ResultTemp)
             time.sleep(600)
-        else if ResultTemp >= 30:
+        elif ResultTemp >= 30:
             send_line_notify(ResultTemp)
             time.sleep(1200)
+        elif ResultTemp >= 27:
+            send_line_notify(ResultTemp)
+            time.sleep(1800)
         else :
             send_line_notify(ResultTemp)
             time.sleep(3600)
+        time.sleep(10)
 
-def send_line_notify(NotifTemp)
+def send_line_notify(NotifTemp):
         line_notify_token = LINEtoken
         line_notify_api = 'https://notify-api.line.me/api/notify'
-        notification_message = '部屋の温度が' + NotifTemp + '度を超えました。'
+        notification_message = '部屋の温度が' + str(NotifTemp) + '度を超えました。'
         headers = {'Authorization': f'Bearer {line_notify_token}'}
         data = {'message': f'message: {notification_message}'}
         requests.post(line_notify_api, headers = headers, data = data)
