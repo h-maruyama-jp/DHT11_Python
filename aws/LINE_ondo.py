@@ -27,10 +27,11 @@ def main():
         elif ResultTemp >= 27:
             send_line_notify(ResultTemp)
             time.sleep(1800)
-        else :
+        elif ResultTemp >= 24:
             send_line_notify(ResultTemp)
             time.sleep(3600)
-        time.sleep(10)
+        else :
+            time.sleep(10)
 
 def send_line_notify(NotifTemp):
         line_notify_token = LINEtoken
