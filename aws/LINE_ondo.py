@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+import time
+import redis
+import requests
+from setenv import RedisKeyValue,LINEtoken
+
+RedisKey = "RPIvalue"
+RedisHost = "redis-16303.c100.us-east-1-4.ec2.cloud.redislabs.com"
+RedisPort = "16303"
+RedisPwd = RedisKeyValue
+
+while True:
+    r = redis.Redis(host=RedisHost, port=RedisPort, password=RedisPwd, db=0)
+    ret = r.get(RedisKey)
+    ondo = str(ret).split("'")
+    print(ondo[1])
+    ResultTemp = int(ondo[1][11:13])
+    if ResultTemp >= 35:
+        line_notify_token = LINEtoken
+        line_notify_api = 'https://notify-api.line.me/api/notify'
+        notification_message = '部屋の温度が35度を超えました。'
+        headers = {'Authorization': f'Bearer {line_notify_token}'}
+        data = {'message': f'message: {notification_message}'}
+        requests.post(line_notify_api, headers = headers, data = data)
+        time.sleep(600)
+    else :
+        time.sleep(10)
+

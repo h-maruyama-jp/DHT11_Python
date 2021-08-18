@@ -28,7 +28,6 @@ def home():
         # print(ondo[1])     # for debug
         values = {"val1":ondo[1][11:15], "val2":ondo[1][26:30]}
         return render_template('index.html', values=values)
-        time.sleep(10)
 
 ##### Run the Flask instance, browse to http://<< Host IP or URL >>:5000 #####
 if __name__ == "__main__":
